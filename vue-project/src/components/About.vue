@@ -19,18 +19,18 @@
           </div>
         </div>
       </div>
+      <!-- <input type="number" v-model="bioStores.age" class="input border-black">
+      <button class="btn btn-info ml-3" @click="bioStores.increment">+</button> -->
     </article>
   </section>
 </template>
 <script setup>
 import { ref } from 'vue';
 import Title from './Title.vue';
-// defineProps({
-//   skill: {
-//     type: Array,
-//     required: true
-//   }
-// })
+// import { useBioStore } from '@/store/BioStore';
+
+// const bioStores = useBioStore()
+
 const skill = ref([
   {
     id: 1,

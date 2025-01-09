@@ -24,30 +24,47 @@
             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
             <li v-for="navlg in linkNav">
-                <RouterLink :to="{name: navlg.urlName}">{{ navlg.name }}</RouterLink>
+              <RouterLink :to="{ name: navlg.urlName }">{{
+                navlg.name
+              }}</RouterLink>
             </li>
           </ul>
         </div>
-        <RouterLink  to="/" class="btn btn-ghost text-xl">Logo</RouterLink>
+        <RouterLink to="/" class="btn btn-ghost text-xl">Logo</RouterLink>
       </div>
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
           <li v-for="navlg in linkNav">
-            <RouterLink :to="{name: navlg.urlName}">{{ navlg.name }}</RouterLink>
+            <RouterLink :to="{ name: navlg.urlName }">{{
+              navlg.name
+            }}</RouterLink>
           </li>
         </ul>
       </div>
       <div class="navbar-end">
-        <!-- <a class="btn">Button</a> -->
+        <select v-model="themeStore.theme" @change="changeTheme" class="select select-bordered">
+          <option value="light">light</option>
+          <option value="dark">dark</option>
+          <option value="corporate">corporate</option>
+        </select>
       </div>
     </div>
   </header>
 </template>
 <script setup>
-import { RouterLink } from 'vue-router';
+import { RouterLink } from "vue-router";
+import { useThemeStore } from "@/store/ThemeStore";
+
+//storage
+const themeStore = useThemeStore()
+
+const changeTheme = () => {
+  themeStore.setTheme(themeStore.theme)   
+}
+
 const linkNav = [
-  { id: 1, name:"About", urlName:"About" },
-  { id: 2, name:"Portofolio", urlName:"Portofolio" },
-  { id: 3, name:"Experience", urlName:"Experience" },
+  { id: 1, name: "About", urlName: "About" },
+  { id: 2, name: "Portofolio", urlName: "Portofolio" },
+  { id: 3, name: "Experience", urlName: "Experience" },
 ];
 </script>
